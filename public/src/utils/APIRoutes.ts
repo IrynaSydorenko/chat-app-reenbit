@@ -1,0 +1,12 @@
+export const loginRoute = '/auth/login';
+export const registerRoute = '/auth/register';
+export const logoutRoute = '/auth/logout';
+export const UserRoute = '/auth/user';
+export const sendMessageRoute = '/messages/addmsg';
+export const recieveMessageRoute = '/messages/getmsg';
+export const setAvatarRoute = '/auth/setavatar';
+export const lastMessageRoute = '/messages/lastmsg';
+export const createChatRoute = '/chats/create';
+export const allChatsRoute = '/chats/all';
+export const deleteChatRoute = '/chats/delete';
+export const updateChatNameRoute = '/chats/update';
