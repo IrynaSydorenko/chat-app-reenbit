@@ -2,6 +2,9 @@
 
 This chat application is built using the MERN stack (MongoDB, Express, React, Node.js). It supports real-time messaging with a sleek user interface.
 
+![Main Page](./images/main.png)
+![Login Page](./images/login.png)
+
 ## Features
 
 Real-time messaging with WebSockets
