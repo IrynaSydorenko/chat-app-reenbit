@@ -1,0 +1,144 @@
+.contactsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-right: 1px solid #000000;
+  min-width: 345px;
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    margin-top: 20px;
+
+    &::-webkit-scrollbar {
+      width: 0.2rem;
+
+      &-thumb {
+        background-color: #ffffff39;
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .contact {
+      background-color: #ffffff34;
+      min-height: 5rem;
+      cursor: pointer;
+      width: 100%;
+      padding: 0.4rem;
+      display: flex;
+      align-items: center;
+      transition: 0.5s ease-in-out;
+      border-top: 1px solid grey;
+
+      &:last-child {
+        border-bottom: 1px solid grey;
+      }
+
+      .avatar img {
+        height: 48px;
+        width: 54px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .username h3 {
+        color: #000000;
+      }
+
+      .lastMessage {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 0.2rem;
+      }
+
+      .actions {
+        display: flex;
+        margin-left: auto;
+
+        .editButton {
+          background-color: transparent;
+          border: none;
+          color: blue;
+          font-size: 1.5rem;
+          cursor: pointer;
+
+          &:hover {
+            color: darkblue;
+          }
+        }
+
+        .deleteButton {
+          background-color: transparent;
+          border: none;
+          color: red;
+          font-size: 1.5rem;
+          cursor: pointer;
+
+          &:hover {
+            color: darkred;
+          }
+        }
+      }
+    }
+
+    .selected {
+      background-color: lightgrey;
+    }
+  }
+
+  .currentUser {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    padding-top: 12px;
+    position: relative;
+
+    .avatar img {
+      height: 4rem;
+      max-inline-size: 100%;
+      border-radius: 50%;
+    }
+
+    .username h2 {
+      color: #000000;
+    }
+
+    @media screen and (max-width: 720px) {
+      gap: 0.5rem;
+
+      .username h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  button {
+    background-color: #4e0eff;
+    color: white;
+    padding: 5px;
+    margin: 0 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #541bf4 !important;
+      color: #ebe7ff !important;
+
+      svg {
+        color: #ebe7ff;
+      }
+    }
+  }
+}
