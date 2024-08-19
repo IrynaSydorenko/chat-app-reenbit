@@ -8,7 +8,11 @@ const app = express();
 const socket = require('socket.io');
 require('dotenv').config();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_APP_URL || 'http://localhost:3000',
+  })
+);
 app.use(express.json());
 
 mongoose
@@ -27,13 +31,17 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/chats', chatRoutes);
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
 
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: process.env.CLIENT_APP_URL || 'http://localhost:3000',
     credentials: true,
   },
 });
