@@ -12,7 +12,7 @@ const Login: React.FC = () => {
   const [values, setValues] = useState({ username: '', password: '' });
 
   useEffect(() => {
-    if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY ?? '')) {
+    if (localStorage.getItem(process.env.LOCALHOST_KEY ?? '')) {
       navigate('/');
     }
   }, [navigate]);
