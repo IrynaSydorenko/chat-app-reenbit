@@ -22,11 +22,6 @@ Ensure that both Node.js and MongoDB are installed and that MongoDB is running l
 
 ### Installation Steps
 
-```shell
-git clone https://github.com/your-username/your-repo-name
-cd your-repo-name
-```
-
 Set Up Environment Variables
 
 Install the dependencies for both the frontend and backend:
