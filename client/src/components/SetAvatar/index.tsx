@@ -8,6 +8,7 @@ import styles from './SetAvatar.module.scss';
 import ToastNotification from '../ToastNotification';
 import axiosInstance from '../../utils/axiosInstance';
 import axios from 'axios';
+import { getUserFromLocalStorage, storeUserData } from '../../utils/auth';
 
 const SetAvatar: React.FC = () => {
   const api = `https://api.multiavatar.com/4645646`;
@@ -17,7 +18,7 @@ const SetAvatar: React.FC = () => {
   const [selectedAvatar, setSelectedAvatar] = useState<number | undefined>();
 
   useEffect(() => {
-    if (!localStorage.getItem(process.env.LOCALHOST_KEY ?? '')) {
+    if (!getUserFromLocalStorage()) {
       navigate('/login');
     }
   }, [navigate]);
@@ -26,10 +27,7 @@ const SetAvatar: React.FC = () => {
     if (selectedAvatar === undefined) {
       toast.error('Please select an avatar');
     } else {
-      const user = JSON.parse(
-        localStorage.getItem(process.env.LOCALHOST_KEY ?? '') || '{}'
-      );
-
+      const user = getUserFromLocalStorage();
       try {
         const { data } = await axiosInstance.post(
           `${setAvatarRoute}/${user._id}`,
@@ -41,10 +39,7 @@ const SetAvatar: React.FC = () => {
         if (data.isSet) {
           user.isAvatarImageSet = true;
           user.avatarImage = data.image;
-          localStorage.setItem(
-            process.env.LOCALHOST_KEY ?? '',
-            JSON.stringify(user)
-          );
+          storeUserData(user);
           navigate('/');
         } else {
           toast.error('Error setting avatar. Please try again.');

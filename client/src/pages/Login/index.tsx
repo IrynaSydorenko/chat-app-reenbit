@@ -4,7 +4,11 @@ import { toast } from 'react-toastify';
 import { loginRoute } from '../../utils/APIRoutes';
 import ToastNotification from '../../components/ToastNotification';
 import styles from './Login.module.scss';
-import { setAuthToken, storeUserData } from '../../utils/auth';
+import {
+  getUserFromLocalStorage,
+  setAuthToken,
+  storeUserData,
+} from '../../utils/auth';
 import axiosInstance from '../../utils/axiosInstance';
 
 const Login: React.FC = () => {
@@ -12,7 +16,7 @@ const Login: React.FC = () => {
   const [values, setValues] = useState({ username: '', password: '' });
 
   useEffect(() => {
-    if (localStorage.getItem(process.env.LOCALHOST_KEY ?? '')) {
+    if (getUserFromLocalStorage()) {
       navigate('/');
     }
   }, [navigate]);

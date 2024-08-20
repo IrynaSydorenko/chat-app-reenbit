@@ -17,11 +17,11 @@ export const isAuthenticated = () => {
 };
 
 export const storeUserData = (user: User) => {
-  localStorage.setItem(process.env.LOCALHOST_KEY ?? '', JSON.stringify(user));
+  localStorage.setItem(process.env.LOCALHOST_KEY || '', JSON.stringify(user));
 };
 
 export const getUserFromLocalStorage = () => {
   return JSON.parse(
-    localStorage.getItem(process.env.LOCALHOST_KEY ?? '') || ''
+    localStorage.getItem(process.env.LOCALHOST_KEY || '') || ''
   );
 };

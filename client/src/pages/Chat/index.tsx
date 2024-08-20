@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Chat as ChatI, User } from '../../types';
 import { isAuthenticated, getUserFromLocalStorage } from '../../utils/auth';
 import axiosInstance from '../../utils/axiosInstance';
+import Welcome from '../../components/Welcome/Welcome';
 
 const Chat: React.FC = () => {
   const socket = useRef<any>(null);
@@ -88,9 +89,7 @@ const Chat: React.FC = () => {
           currentChat={currentChat}
         />
         {currentChat === undefined ? (
-          <div className={styles.welcome}>
-            <h2>Select a chat to start messaging</h2>
-          </div>
+          <Welcome />
         ) : (
           socket.current && (
             <ChatContainer

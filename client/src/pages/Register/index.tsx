@@ -4,7 +4,11 @@ import { toast } from 'react-toastify';
 import ToastNotification from '../../components/ToastNotification';
 import { registerRoute } from '../../utils/APIRoutes';
 import styles from './Register.module.scss';
-import { setAuthToken, storeUserData } from '../../utils/auth';
+import {
+  getUserFromLocalStorage,
+  setAuthToken,
+  storeUserData,
+} from '../../utils/auth';
 import axiosInstance from '../../utils/axiosInstance';
 
 const Register: React.FC = () => {
@@ -17,7 +21,7 @@ const Register: React.FC = () => {
   });
 
   useEffect(() => {
-    if (localStorage.getItem(process.env.LOCALHOST_KEY ?? '')) {
+    if (getUserFromLocalStorage()) {
       navigate('/');
     }
   }, [navigate]);
