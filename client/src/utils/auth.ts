@@ -17,11 +17,23 @@ export const isAuthenticated = () => {
 };
 
 export const storeUserData = (user: User) => {
-  localStorage.setItem(process.env.LOCALHOST_KEY || '', JSON.stringify(user));
+  localStorage.setItem(
+    process.env.LOCALHOST_KEY || 'chat-app-user',
+    JSON.stringify(user)
+  );
 };
 
 export const getUserFromLocalStorage = () => {
-  return JSON.parse(
-    localStorage.getItem(process.env.LOCALHOST_KEY || '') || ''
+  const user = localStorage.getItem(
+    process.env.LOCALHOST_KEY || 'chat-app-user'
   );
+  if (user) {
+    try {
+      return JSON.parse(user);
+    } catch (error) {
+      console.error('Error parsing user data from local storage:', error);
+      return null;
+    }
+  }
+  return null;
 };
