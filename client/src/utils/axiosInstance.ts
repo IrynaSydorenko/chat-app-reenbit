@@ -23,6 +23,7 @@ axiosInstance.interceptors.response.use(
     console.log(error);
     if (error.response.status === 401) {
       // If unauthorized, redirect to login
+      localStorage.clear();
       window.location.href = '/login';
     }
     return Promise.reject(error);
