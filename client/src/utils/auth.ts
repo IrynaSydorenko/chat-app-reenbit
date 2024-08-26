@@ -16,6 +16,12 @@ export const isAuthenticated = () => {
   return !!getAuthToken();
 };
 
+export const clearLocalStorage = () => {
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('chat-app-user');
+  localStorage.removeItem('chat-app-current-user-v1');
+};
+
 export const storeUserData = (user: User) => {
   localStorage.setItem(
     process.env.LOCALHOST_KEY || 'chat-app-user',

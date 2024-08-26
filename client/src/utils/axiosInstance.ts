@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { clearLocalStorage } from './auth';
 
 const axiosInstance = axios.create({
   baseURL: process.env.API_URL ?? 'http://localhost:5000/api',
@@ -23,7 +24,7 @@ axiosInstance.interceptors.response.use(
     console.log(error);
     if (error.response.status === 401) {
       // If unauthorized, redirect to login
-      localStorage.clear();
+      clearLocalStorage();
       window.location.href = '/login';
     }
     return Promise.reject(error);

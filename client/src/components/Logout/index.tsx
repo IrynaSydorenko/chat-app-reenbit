@@ -4,7 +4,7 @@ import { logoutRoute } from '../../utils/APIRoutes';
 import styles from './Logout.module.scss';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../utils/axiosInstance';
-import { clearAuthToken } from '../../utils/auth';
+import { clearLocalStorage } from '../../utils/auth';
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -13,8 +13,7 @@ const Logout = () => {
     const { status } = await axiosInstance.post(`${logoutRoute}`);
     if (status === 200) {
       toast.success('Logged out successfully');
-      localStorage.clear();
-      clearAuthToken();
+      clearLocalStorage();
       navigate('/login');
     }
   };
