@@ -6,6 +6,7 @@ import ToastNotification from '../../components/ToastNotification';
 import styles from './Login.module.scss';
 import {
   getUserFromLocalStorage,
+  isAuthenticated,
   setAuthToken,
   storeUserData,
 } from '../../utils/auth';
@@ -16,7 +17,8 @@ const Login: React.FC = () => {
   const [values, setValues] = useState({ username: '', password: '' });
 
   useEffect(() => {
-    if (getUserFromLocalStorage()) {
+    const user = getUserFromLocalStorage();
+    if (user && isAuthenticated()) {
       navigate('/');
     }
   }, [navigate]);
